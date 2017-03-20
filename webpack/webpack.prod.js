@@ -12,7 +12,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractAntd = new ExtractTextPlugin('[name]-antd.css');
 const extractMy = new ExtractTextPlugin('[name]-my.css');
 const svgDirs = [
-    require.resolve('antd-mobile').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
+    require.resolve('antd').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
     path.resolve(__dirname, '../web/svg'),  // 2. 自己私人的 svg 存放目录
 
 ];
@@ -24,9 +24,9 @@ module.exports = {
         main: ['./index.js','babel-polyfill']
     },
     output: {
-        publicPath: "/assets/",
+        publicPath: "/assets",
         filename: '[name].js',
-        path: path.resolve(productRoot, '/assets')
+        path: path.resolve(productRoot, 'assets')
     },
     resolve: {
         extensions: ['.web.js', '.js', '.json']
