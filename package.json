@@ -1,0 +1,19 @@
+{
+  "name": "admin-dva",
+  "version": "1.0.0",
+  "description": "dva配合antd的中后端平台，参照https://github.com/zuiidea/antd-admin项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nalantianyi/admin-dva.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/nalantianyi/admin-dva/issues"
+  },
+  "homepage": "https://github.com/nalantianyi/admin-dva#readme"
+}
