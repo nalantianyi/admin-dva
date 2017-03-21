@@ -4,9 +4,9 @@
 import React, {PropTypes} from 'react';
 import {Menu, Icon} from 'antd';
 import {Link} from 'dva/router';
-import menus from '../../utils/menu';
+import {menu} from '../../utils';
 
-const topMenus = menus.map(item => item.key);
+const topMenus = menu.map(item => item.key);
 const getMenus = (menuArray, siderFold, parentPath = '/') => {
     return menuArray.map(item => {
         const linkTo = parentPath + item.key;
