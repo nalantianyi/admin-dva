@@ -48,7 +48,8 @@ module.exports = {
                 use: [{
                     loader: "style-loader" // creates style nodes from JS strings
                 }, {
-                    loader: "css-loader" // translates CSS into CommonJS
+                    loader: "css-loader",// translates CSS into CommonJS
+                    options: {modules: true}
                 }, {
                     loader: "less-loader" // compiles Less to CSS
                 }]
@@ -56,12 +57,12 @@ module.exports = {
             {
                 test: /\.css$/,
                 include: /node_modules/,
-                use: extractAntd.extract(['css-loader', 'postcss-loader' ]),
+                use: extractAntd.extract(['css-loader', 'postcss-loader']),
             },
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                use: extractMy.extract([{loader:'css-loader',options:{modules:true}}, 'postcss-loader' ])
+                use: extractMy.extract([{loader: 'css-loader', options: {modules: true}}, 'postcss-loader'])
             },
             {
                 test: /\.(jpeg|jpg|png|gif)$/,
@@ -96,7 +97,7 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
         new HtmlWebpackPlugin({
-            chunks: ['main','vendor'],
+            chunks: ['main', 'vendor'],
             filename: '../index.html',
             title: 'Admin-AntD',
             template: '../template/index.html'
