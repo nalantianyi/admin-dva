@@ -4,7 +4,6 @@
 import dva from 'dva';
 import createLoading from 'dva-loading';
 import {hashHistory} from'dva/router';
-console.log('a');
 const app = dva({
     ...createLoading(),
     history: hashHistory,
@@ -12,5 +11,6 @@ const app = dva({
         console.error('app onError -- ', error);
     }
 });
+app.router(require('./router'));
 
 app.start('#root');
