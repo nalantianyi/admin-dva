@@ -26,9 +26,9 @@ module.exports = {
             'webpack-dev-server/client?http://localhost:9000']
     },
     output: {
-        publicPath: "/assets/",
+        publicPath: "/public/assets/",
         filename: '[name].js',
-        path: path.resolve(productRoot, '/assets')
+        path: path.resolve(productRoot, 'app/public/assets')
     },
     resolve: {
         extensions: ['.web.js', '.js', '.json']
@@ -83,10 +83,10 @@ module.exports = {
         contentBase: productRoot,
         port: 9000,
         hot: true,
-        // proxy: {
-        //     "/": "http://localhost:3030"
-        // },
-        publicPath: "/assets"
+        proxy: {
+            "/": "http://localhost:3030"
+        },
+        publicPath: "/public/assets/"
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -98,7 +98,7 @@ module.exports = {
         // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
         new HtmlWebpackPlugin({
             chunks: ['main', 'vendor'],
-            filename: '../index.html',
+            filename: '../../view/index.html',
             title: 'Admin-AntD',
             template: '../template/index.html'
         }),

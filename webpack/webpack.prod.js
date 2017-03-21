@@ -24,9 +24,9 @@ module.exports = {
         main: ['./index.js','babel-polyfill']
     },
     output: {
-        publicPath: "/assets",
+        publicPath: "/public/assets/",
         filename: '[name].js',
-        path: path.resolve(productRoot, 'assets')
+        path: path.resolve(productRoot, 'app/public/assets')
     },
     resolve: {
         extensions: ['.web.js', '.js', '.json']
@@ -79,7 +79,7 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin(),
         new HtmlWebpackPlugin({
             chunks: ['main','vendor'],
-            filename: '../index.html',
+            filename: '../../view/index.html',
             title: 'Admin-AntD',
             template: '../template/index.html'
         }),

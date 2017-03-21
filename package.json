@@ -4,6 +4,8 @@
   "description": "dva配合antd的中后端平台，参照https://github.com/zuiidea/antd-admin项目",
   "main": "index.js",
   "scripts": {
+    "dev": "egg-bin dev --port 3030",
+    "prod": "EGG_SERVER_ENV=prod nohup node dispatch.js > stdout.log 2> stderr.log &",
     "web-dev": "cross-env  NODE_ENV=development BABEL_ENV=development webpack-dev-server --config webpack/webpack.config.js",
     "web-build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --config webpack/webpack.prod.js"
   },
@@ -45,15 +47,22 @@
     "svg-sprite-loader": "^0.3.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.0"
+    "webpack-dev-server": "^2.1.0-beta.0",
+    "egg-bin": "^2.2.3",
+    "egg-mock": "^3.1.2"
   },
   "dependencies": {
+    "egg": "^1.0.0-rc.3",
+    "egg-view-nunjucks": "^2.0.0",
+    "koa-compress": "^2.0.0",
+    "koa-is-json": "^1.0.0",
     "antd": "^2.8.1",
     "axios": "^0.15.3",
     "babel-runtime": "^6.23.0",
     "classnames": "^2.2.5",
     "dva": "^1.2.1",
     "dva-loading": "^0.2.0",
+    "qs": "^6.4.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   }
