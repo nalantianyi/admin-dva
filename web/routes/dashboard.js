@@ -12,6 +12,7 @@ const bodyStyle = {
     }
 };
 function Dashboard() {
+    return (<div>dashboard</div>);
 }
 Dashboard.propTypes = {
     dashboard: PropTypes.object

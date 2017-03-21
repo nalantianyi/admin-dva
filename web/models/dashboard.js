@@ -190,8 +190,8 @@ export default {
     },
     subscriptions: {
         setup({dispatch}){
-            dispatch({type: 'queryWeather'});
-            dispatch({type: 'query'});
+           // dispatch({type: 'queryWeather'});
+           // dispatch({type: 'query'});
         }
     },
     effects: {
