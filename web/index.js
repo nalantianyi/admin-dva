@@ -11,6 +11,8 @@ const app = dva({
         console.error('app onError -- ', error);
     }
 });
+app.model(require('./models/app'));
 app.router(require('./router'));
+console.log(app);
 
 app.start('#root');

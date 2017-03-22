@@ -45,7 +45,7 @@ module.exports = {
             {
                 test: /\.less$/,
                 exclude: /node_modules/,
-                use: extractLess.extract(['css-loader','less-loader' ]),
+                use: extractLess.extract(['css-loader','postcss-loader','less-loader' ]),
             },
             {
                 test: /\.css$/,
