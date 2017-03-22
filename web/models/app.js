@@ -19,7 +19,14 @@ export default {
         navOpenKeys:JSON.parse(localStorage.getItem('navOpenKeys')||'[]')
     },
     subscriptions:{
+        setup ({ dispatch }) {
+            dispatch({ type: 'hello',payload:{hello:123} });
+        }
     },
     effects:{},
-    reducers:{}
+    reducers:{
+        hello(state,action){
+            return {...state,...action.payload};
+        }
+    }
 };

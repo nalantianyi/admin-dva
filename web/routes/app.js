@@ -36,6 +36,6 @@ App.propTypes={
 };
 export default connect(({app, loading}) => {
     return {
-        app, loading: loading.models.app
+        app, loading: loading.global
     };
 })(App);
