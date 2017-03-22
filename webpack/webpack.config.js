@@ -11,6 +11,7 @@ const pxtorem = require('postcss-pxtorem');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractAntd = new ExtractTextPlugin('[name]-antd.css');
 const extractMy = new ExtractTextPlugin('[name]-my.css');
+const extractLess = new ExtractTextPlugin('[name]-less.css');
 
 const svgDirs = [
     require.resolve('antd').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
@@ -45,14 +46,7 @@ module.exports = {
             {
                 test: /\.less$/,
                 exclude: /node_modules/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader",// translates CSS into CommonJS
-                    options: {modules: true}
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
-                }]
+                use: extractLess.extract(['css-loader?modules', 'postcss-loader','less-loader' ]),
             },
             {
                 test: /\.css$/,
@@ -121,6 +115,8 @@ module.exports = {
             }
         }),
         extractAntd,
-        extractMy
+        extractMy,
+        extractLess
+
     ]
 };
