@@ -13,26 +13,26 @@ const registerModel = (app, model) => {
     }
 };
 
-const Routers = ({history, app}) => {
+const Routers = function ({history, app}) {
     const routes = [{
         path: '/',
         component: App,
         getIndexRoute(nextState, cb){
             require.ensure([], require => {
-                registerModel(app, require('./models/dashboard'));
-                cb(null, {component: require('./routes/dashboard')});
+                registerModel(app, require('./models/dashboard'))
+                cb(null, {component: require('./routes/dashboard')})
             }, 'dashboard');
         },
         childRoutes: [
             {
                 path: 'dashboard',
                 name: 'dashboard',
-                getComponent(nextState, cb){
+                getComponent (nextState, cb) {
                     require.ensure([], require => {
-                        registerModel(app, require('./models/dashboard'));
-                        cb(null, require('./routes/dashboard'));
-                    }, 'dashboard');
-                }
+                        registerModel(app, require('./models/dashboard'))
+                        cb(null, require('./routes/dashboard'))
+                    }, 'dashboard')
+                },
             },
             // {
             //     path: 'users',

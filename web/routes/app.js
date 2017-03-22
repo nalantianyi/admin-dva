@@ -26,8 +26,16 @@ function App({children, location, dispatch, app, loading}) {
                 </Spin>
             </div>}</div>);
 }
-export default connect(({app, loading}) => (
-    {
+
+App.propTypes={
+    children: PropTypes.element.isRequired,
+    location: PropTypes.object,
+    dispatch: PropTypes.func,
+    app: PropTypes.object,
+    loading: PropTypes.bool,
+};
+export default connect(({app, loading}) => {
+    return {
         app, loading: loading.models.app
-    }
-))(App);
+    };
+})(App);

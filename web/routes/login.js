@@ -37,7 +37,7 @@ const Login = ({loginButtonLoading, onOk, form:{getFieldDecorator, validateField
                     (<Input size="large" type="password" onPressEnter={handleOk} placeholder="密码"/>)}
                 </FormItem>
                 <Row>
-                    <Button type="primary" size="large" onOk={handleOk} loading={loginButtonLoading}>
+                    <Button type="primary" size="large" onClick={handleOk} loading={loginButtonLoading}>
                         登录
                     </Button>
                 </Row>

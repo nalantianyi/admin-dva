@@ -9,10 +9,12 @@ const app = dva({
     history: hashHistory,
     onError(error){
         console.error('app onError -- ', error);
+    },
+    onStateChange(){
+        console.log(app._store.getState());
     }
 });
 app.model(require('./models/app'));
 app.router(require('./router'));
-console.log(app);
 
 app.start('#root');
