@@ -26,7 +26,7 @@ function App({children, location, dispatch, app, loading}) {
                 </Spin>
             </div>}</div>);
 }
-export default connect((app, loading) => (
+export default connect(({app, loading}) => (
     {
         app, loading: loading.models.app
     }
