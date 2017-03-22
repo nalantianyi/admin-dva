@@ -19,6 +19,10 @@
                 // 如果非iOS, 非Android4.3以上, 非UC内核, 就不执行高清, dpr设为1;
                 dpr = 1;
             }
+            //添加mac等高清屏幕检测处理
+            if (/Macintosh/.test(navigator.userAgent)) {
+                dpr = win.devicePixelRatio;
+            }
             var scale = 1 / dpr;
 
             var metaEl = doc.querySelector('meta[name="viewport"]');
@@ -37,7 +41,7 @@
     <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
     <script>
         if ('addEventListener' in document) {
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 FastClick.attach(document.body);
             }, false);
         }
