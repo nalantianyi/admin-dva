@@ -7,6 +7,7 @@ dva配合antd的中后端平台<br/>
 <ul>
 <li>使用webpack2进行构建</li>
 <li>不使用mock数据，使用egg.js搭建后端接口</li>
+<li>前端ajax使用axios，替换原有的fetch</li>
 <li>添加session</li>
 </ul>
 <p>下一步版本目标，计划时间点：4月1日</p>
