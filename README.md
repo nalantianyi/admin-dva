@@ -6,6 +6,8 @@ dva配合antd的中后端平台<br/>
 <p>目前修改点</p>
 <ul>
 <li>使用webpack2进行构建</li>
+<li>webpack2 css和js分离打包</li>
+<li>前端开发环境和生产环境优化</li>
 <li>不使用mock数据，使用egg.js搭建后端接口</li>
 <li>前端ajax使用axios，替换原有的fetch</li>
 <li>添加session</li>

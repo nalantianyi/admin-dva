@@ -189,34 +189,45 @@ export default {
         }
     },
     subscriptions: {
+        setup ({ dispatch }) {
+            dispatch({ type: 'queryWeather' })
+            dispatch({ type: 'query' })
+        }
     },
     effects: {
-        *query({payload}, {call, put}){
-            const data = yield call(query, parse(payload));
-            yield put({type: 'queryWeather', payload: {...data}})
+        *query ({
+            payload,
+        }, { call, put }) {
+            const data = yield call(query, parse(payload))
+            yield put({ type: 'queryWeather', payload: { ...data } })
         },
-        *queryWeather({payload}, {call, put}){
-            const myCityResult = yield call(myCity, {flg: 0});
-            const myCityData = myCityResult.query.results.json;
-            const result = yield call(queryWeather, {cityCode: myCityData.selectCityCode});
-            const data = result.query.results.json;
-            const weather = zuimei.parseActualData(data.data.actual);
-            weather.city = myCityData.selectCityName;
-            yield put({
-                type: 'queryWeatherSuccess',
-                payload: {
-                    weather
-                }
-            });
+        *queryWeather ({
+            payload,
+        }, { call, put }) {
+            const myCityResult = yield call(myCity, { flg: 0 })
+            const myCityData = myCityResult.query.results.json
+            const result = yield call(queryWeather, { cityCode: myCityData.selectCityCode })
+            const data = result.query.results.json
+            const weather = zuimei.parseActualData(data.data.actual)
+            weather.city = myCityData.selectCityName
 
-        }
+            yield put({ type: 'queryWeatherSuccess', payload: {
+                weather,
+            } })
+        },
     },
     reducers: {
-        queryWeatherSuccess(state, action){
-            return {...state, ...action.payload};
+        queryWeatherSuccess (state, action) {
+            return {
+                ...state,
+                ...action.payload,
+            }
         },
-        queryWeather(state, action){
-            return {...state, ...action.payload};
-        }
-    }
+        queryWeather (state, action) {
+            return {
+                ...state,
+                ...action.payload,
+            }
+        },
+    },
 };
