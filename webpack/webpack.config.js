@@ -93,7 +93,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             chunks: ['main', 'vendor'],
             filename: '../../view/index.html',
-            title: 'Admin-AntD',
+            title: 'Dva-Admin',
             template: '../template/index.html'
         }),
         new webpack.LoaderOptionsPlugin({
