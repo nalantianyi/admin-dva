@@ -20,7 +20,7 @@ export default {
     },
     subscriptions: {
         setup ({dispatch}) {
-            dispatch({type:'queryUser'});
+            dispatch({type: 'queryUser'});
         }
     },
     effects: {
@@ -53,7 +53,9 @@ export default {
             if (data.success) {
                 yield put({type: 'logoutSuccess'});
             }
-
+        },
+        *switchSider({payload}, {put}){
+            yield put({type: 'handleSwitchSider'});
         }
     },
     reducers: {
@@ -68,6 +70,10 @@ export default {
         },
         showLoginButtonLoading(state){
             return {...state, loginButtonLoading: true};
+        },
+        handleSwitchSider(state){
+            localStorage.setItem('antdAdminSiderFold', !state.siderFold);
+            return {...state, siderFold: !state.siderFold};
         }
     }
 };
