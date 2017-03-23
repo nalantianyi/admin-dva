@@ -35,6 +35,12 @@ module.exports = {
         csrf: {
             enable: false,
         },
+    },
+    session: {
+        key: 'DVA_ADMIN',
+        maxAge: 1 * 3600 * 1000, // 1小时
+        httpOnly: true,
+        encrypt: true
     }
 
 }

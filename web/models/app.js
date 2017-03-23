@@ -20,13 +20,9 @@ export default {
     },
     subscriptions:{
         setup ({ dispatch }) {
-            dispatch({ type: 'hello',payload:{hello:123} });
         }
     },
     effects:{},
     reducers:{
-        hello(state,action){
-            return {...state,...action.payload};
-        }
     }
 };
