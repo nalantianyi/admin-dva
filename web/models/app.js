@@ -20,6 +20,7 @@ export default {
     },
     subscriptions: {
         setup ({dispatch}) {
+            dispatch({type:'queryUser'});
         }
     },
     effects: {

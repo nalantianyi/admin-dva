@@ -41,7 +41,7 @@ const Login = ({loginButtonLoading, onOk, form:{getFieldDecorator, validateField
                         登录
                     </Button>
                 </Row>
-                <p><span>账号：nalantianyi</span>
+                <p><span>账号：纳兰天忆</span>
                     <span>密码：123456</span></p>
             </Form>
 

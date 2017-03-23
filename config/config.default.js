@@ -26,7 +26,6 @@ module.exports = {
         match: '/public'
     },
     bodyParser: {
-        jsonLimit: '10m',
     },
     compress: {
         threshold: 2048

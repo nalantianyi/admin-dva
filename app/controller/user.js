@@ -25,6 +25,7 @@ module.exports = app => {
 
         * login() {
             const userItem = this.ctx.request.body;
+            console.log(userItem);
             const response = {success: false, message: ''};
             const d = dataKey.filter((item) => {
                 return item.username === userItem.username;

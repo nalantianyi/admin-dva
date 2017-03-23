@@ -21,11 +21,11 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default async function request(url, options) {
-    const response = await axios(url, options);
+    const response = await axios({...options,url});
 
     checkStatus(response);
 
-    const data = await response.json();
+    const data = response;
 
     const ret = {
         data
