@@ -4,7 +4,12 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'dva';
 import Login from './login';
+import Header from '../components/layout/header';
+import Bread from '../components/layout/bread';
+import Footer from '../components/layout/footer';
+import Sider from '../components/layout/sider';
 import styles from '../components/layout/main.less'
+import classnames from 'classnames';
 import {Spin} from 'antd';
 function App({children, location, dispatch, app, loading}) {
     const {login, loginButtonLoading, user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys}=app;
@@ -38,10 +43,40 @@ function App({children, location, dispatch, app, loading}) {
     };
 
 
+    const siderProps = {
+        siderFold,
+        darkTheme,
+        location,
+        navOpenKeys,
+        changeTheme(){
+            dispatch({type: 'app/changeTheme'});
+        },
+        changeOpenKeys(openKeys){
+            localStorage.setItem('navOpenKeys', JSON.stringify(openKeys));
+            dispatch({type: 'app/handleNavOpenkeys', payload: {navOpenKeys: openKeys}});
+        }
+    };
+
+
     return (<div>{
         login
             ?
-            <div>app</div>
+            <div
+                className={classnames(styles.layout, {[styles.fold]: isNavbar ? false : siderFold}, {[styles.withnavbar]: isNavbar})}>
+                {!isNavbar ? <aside className={classnames(styles.sider, {[styles.light]: !darkTheme})}>
+                        <Sider {...siderProps}/>
+                    </aside> : ''}
+                <div className={styles.main}>
+                    <Header {...headerProps}></Header>
+                    <Bread location={location}></Bread>
+                    <div className={styles.container}>
+                        <div className={styles.content}>
+                            {children}
+                        </div>
+                    </div>
+                    <Footer/>
+                </div>
+            </div>
             :
             <div className={styles.spin}>
                 <Spin tip="加载用户信息..." spinning={loading} size="large">

@@ -15,9 +15,8 @@ module.exports = app => {
     class UserController extends app.Controller {
         * userInfo() {
             var session = this.ctx.session;
-            console.log(session['user_session']);
             const res = {
-                success: session['user_session'] && session['user_session'] < new Date().getTime(),
+                success: session['user_name'] && session['user_name'] !== '',
                 username: session['user_name'] || '',
                 message: ''
             };
@@ -34,7 +33,6 @@ module.exports = app => {
             if (d.length) {
                 if (d[0].password === userItem.password) {
                     let session = this.ctx.session;
-                    session['user_session'] = new Date().getTime();
                     session['user_name'] = userItem.username;
                     response.message = '登录成功';
                     response.success = true;
