@@ -56,6 +56,10 @@ export default {
         },
         *switchSider({payload}, {put}){
             yield put({type: 'handleSwitchSider'});
+        },
+        *changeTheme({payload}, {put}){
+            yield put({type: 'handleChangeTheme'});
+
         }
     },
     reducers: {
@@ -74,6 +78,10 @@ export default {
         handleSwitchSider(state){
             localStorage.setItem('antdAdminSiderFold', !state.siderFold);
             return {...state, siderFold: !state.siderFold};
+        },
+        handleChangeTheme(state){
+            localStorage.setItem('antdAdminDarkTheme', !state.darkTheme);
+            return {...state, darkTheme: !state.darkTheme};
         }
     }
 };
