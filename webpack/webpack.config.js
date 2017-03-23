@@ -53,11 +53,11 @@ module.exports = {
                 include: /node_modules/,
                 use: extractAntd.extract(['css-loader', 'postcss-loader']),
             },
-            {
-                test: /\.css$/,
-                exclude: /node_modules/,
-                use: extractMy.extract([{loader: 'css-loader', options: {modules: true}}, 'postcss-loader'])
-            },
+            // {
+            //     test: /\.css$/,
+            //     exclude: /node_modules/,
+            //     use: extractMy.extract([{loader: 'css-loader', options: {modules: true}}, 'postcss-loader'])
+            // },
             {
                 test: /\.(jpeg|jpg|png|gif)$/,
                 use: 'url-loader?limit=8192'
@@ -115,7 +115,7 @@ module.exports = {
             }
         }),
         extractAntd,
-        extractMy,
+    //    extractMy,
         extractLess
 
     ]
