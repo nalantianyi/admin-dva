@@ -1,7 +1,4 @@
-/**
- * Created by nalantianyi on 2017/3/21.
- */
-import  React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import {connect} from 'dva';
 import {Row, Col, Card} from 'antd';
 import NumberCard from '../components/dashboard/numberCard';
@@ -15,14 +12,15 @@ import Browser from '../components/dashboard/browser';
 import Cpu from '../components/dashboard/cpu';
 import User from '../components/dashboard/user';
 import styles from './dashboard.less';
-import {color} from '../utils/theme';
+import {color} from '../utils';
 
 const bodyStyle = {
     bodyStyle: {
         height: 432,
-        background: '#fff'
-    }
-};
+        backgroundColor: '#fff',
+    },
+}
+
 function Dashboard({dashboard}) {
     const {weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user} = dashboard
     const numberCards = numbers.map((item, key) => <Col key={key} lg={6} md={12}>
@@ -45,7 +43,7 @@ function Dashboard({dashboard}) {
                         <Card bordered={false} className={styles.weather} bodyStyle={{
                             padding: 0,
                             height: 204,
-                            background: color.blue,
+                            backgroundColor: color.blue,
                         }}>
                             <Weather {...weather} />
                         </Card>
@@ -54,7 +52,7 @@ function Dashboard({dashboard}) {
                         <Card bordered={false} className={styles.quote} bodyStyle={{
                             padding: 0,
                             height: 204,
-                            background: color.peach,
+                            backgroundColor: color.peach,
                         }}>
                             <Quote {...quote} />
                         </Card>
@@ -101,4 +99,4 @@ Dashboard.propTypes = {
     dashboard: PropTypes.object,
 }
 
-export default connect(({dashboard}) => ({dashboard}))(Dashboard);
+export default connect(({dashboard}) => ({dashboard}))(Dashboard)

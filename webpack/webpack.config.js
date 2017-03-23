@@ -46,18 +46,18 @@ module.exports = {
             {
                 test: /\.less$/,
                 exclude: /node_modules/,
-                use: extractLess.extract(['css-loader?modules','postcss-loader','less-loader' ]),
+                use: extractLess.extract(['css-loader?modules', 'postcss-loader', 'less-loader']),
             },
             {
                 test: /\.css$/,
                 include: /node_modules/,
                 use: extractAntd.extract(['css-loader', 'postcss-loader']),
             },
-            // {
-            //     test: /\.css$/,
-            //     exclude: /node_modules/,
-            //     use: extractMy.extract([{loader: 'css-loader', options: {modules: true}}, 'postcss-loader'])
-            // },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: extractMy.extract([{loader: 'css-loader', options: {modules: true}}, 'postcss-loader'])
+            },
             {
                 test: /\.(jpeg|jpg|png|gif)$/,
                 use: 'url-loader?limit=8192'
@@ -110,12 +110,11 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: function (module) {
-                // 该配置假定你引入的 vendor 存在于 node_modules 目录中
                 return module.context && module.context.indexOf('node_modules') !== -1;
             }
         }),
         extractAntd,
-    //    extractMy,
+        extractMy,
         extractLess
 
     ]

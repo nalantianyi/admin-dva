@@ -1,24 +1,22 @@
 /**
  * Created by nalantianyi on 2017/3/21.
  */
-import React, {PropTypes} from 'react';
-import {Menu, Icon} from 'antd';
-import {Link} from 'dva/router';
-import {menu} from '../../utils';
+import React, {PropTypes} from 'react'
+import {Menu, Icon} from 'antd'
+import {Link} from 'dva/router'
+import {menu} from '../../utils'
 
-const topMenus = menu.map(item => item.key);
-const getMenus = (menuArray, siderFold, parentPath = '/') => {
+const topMenus = menu.map(item => item.key)
+const getMenus = function (menuArray, siderFold, parentPath = '/') {
     return menuArray.map(item => {
-        const linkTo = parentPath + item.key;
+        const linkTo = parentPath + item.key
         if (item.child) {
             return (
-                <Menu.SubMenu key={linkTo}
-                              title={<span>{item.icon ? <Icon
-                                      type={item.icon}></Icon> : ''}{siderFold && topMenus.indexOf(item.key) >= 0 ? '' : item.name}
-                              </span>}>
+                <Menu.SubMenu key={linkTo} title={<span>{item.icon ? <Icon
+                        type={item.icon}/> : ''}{siderFold && topMenus.indexOf(item.key) >= 0 ? '' : item.name}</span>}>
                     {getMenus(item.child, siderFold, `${linkTo}/`)}
                 </Menu.SubMenu>
-            );
+            )
         }
         return (
             <Menu.Item key={linkTo}>
@@ -27,38 +25,51 @@ const getMenus = (menuArray, siderFold, parentPath = '/') => {
                     {siderFold && topMenus.indexOf(item.key) >= 0 ? '' : item.name}
                 </Link>
             </Menu.Item>
-        );
-    });
-};
+        )
+    })
+}
+
 function Menus({siderFold, darkTheme, location, handleClickNavMenu, navOpenKeys, changeOpenKeys}) {
-    const menuItems = getMenus(menu, siderFold);
+    const menuItems = getMenus(menu, siderFold)
 
     const getAncestorKeys = (key) => {
         const map = {
-            '/navigation/navigation2': ['/navigation']
-        };
-        return map[key] || [];
-    };
+            '/navigation/navigation2': ['/navigation'],
+        }
+        return map[key] || []
+    }
 
     const onOpenChange = (openKeys) => {
-        const latestOpenKey = openKeys.find(key => !(navOpenKeys.indexOf(key) > -1));
-        const latestCloseKey = navOpenKeys.find(key => !(openKeys.indexOf(key) > -1));
-        let nextOpenKeys = [];
-        if (latestCloseKey) {
-            nextOpenKeys = getAncestorKeys(latestOpenKey).concat(latestCloseKey);
+        const latestOpenKey = openKeys.find(key => !(navOpenKeys.indexOf(key) > -1))
+        const latestCloseKey = navOpenKeys.find(key => !(openKeys.indexOf(key) > -1))
+        let nextOpenKeys = []
+        if (latestOpenKey) {
+            nextOpenKeys = getAncestorKeys(latestOpenKey).concat(latestOpenKey)
         }
-        onOpenChange(nextOpenKeys);
-        //当菜单收起时，无法操作openKeys
-    };
-    let menuProps = !siderFold ? {onOpenChange, openKeys: navOpenKeys} : {};
+        if (latestCloseKey) {
+            nextOpenKeys = getAncestorKeys(latestCloseKey)
+        }
+        changeOpenKeys(nextOpenKeys)
+    }
+    // 菜单栏收起时，不能操作openKeys
+    let menuProps = !siderFold ? {
+            onOpenChange,
+            openKeys: navOpenKeys,
+        } : {}
 
     return (
-        <Menu {...menuProps} mode={siderFold ? 'vertical' : 'inline'} theme={darkTheme ? 'dark' : 'light'}
-              onClick={handleClickNavMenu}
-              defaultSelectedKeys={[location.pathname !== '/' ? location.pathname : '/dashboard']}>
+        <Menu
+            {...menuProps}
+            mode={siderFold ? 'vertical' : 'inline'}
+            theme={darkTheme ? 'dark' : 'light'}
+            onClick={handleClickNavMenu}
+            defaultSelectedKeys={[location.pathname !== '/' ? location.pathname : '/dashboard']}
+        >
             {menuItems}
-        </Menu>);
+        </Menu>
+    )
 }
+
 Menus.propTypes = {
     siderFold: PropTypes.bool,
     darkTheme: PropTypes.bool,
@@ -66,6 +77,7 @@ Menus.propTypes = {
     isNavbar: PropTypes.bool,
     handleClickNavMenu: PropTypes.func,
     navOpenKeys: PropTypes.array,
-    changeOpenKeys: PropTypes.func
+    changeOpenKeys: PropTypes.func,
 };
+
 export default Menus;

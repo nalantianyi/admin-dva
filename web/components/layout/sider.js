@@ -13,24 +13,22 @@ function Sider({siderFold, darkTheme, location, changeTheme, navOpenKeys, change
         darkTheme,
         location,
         navOpenKeys,
-        changeOpenKeys
-    };
+        changeOpenKeys,
+    }
     return (
         <div>
             <div className={styles.logo}>
-                <img src={config.logoSrc} alt={'logo'}/>
+                <img alt={'logo'} src={config.logoSrc}/>
                 {siderFold ? '' : <span>{config.logoText}</span>}
             </div>
-            <Menus {...menusProps}/>
+            <Menus {...menusProps} />
             {!siderFold ? <div className={styles.switchtheme}>
                     <span><Icon type="bulb"/>切换主题</span>
                     <Switch onChange={changeTheme} defaultChecked={darkTheme} checkedChildren="黑"
-                            unCheckedChildren="白"></Switch>
+                            unCheckedChildren="白"/>
                 </div> : ''}
-
         </div>
-    );
-
+    )
 }
 Sider.propTypes = {
     siderFold: PropTypes.bool,
@@ -40,4 +38,4 @@ Sider.propTypes = {
     navOpenKeys: PropTypes.array,
     changeOpenKeys: PropTypes.func
 };
-export default Sider
+export default Sider;

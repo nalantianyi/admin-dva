@@ -4,4 +4,4 @@ import DropOption from './dropOption.js'
 
 import layer from './layer.js'
 
-export { Ico, Search, DropOption, layer }
+export {Ico, Search, DropOption, layer}

@@ -6,5 +6,7 @@ module.exports = app => {
     app.get('/api/userInfo','user.userInfo');
     app.post('/api/login','user.login');
     app.post('/api/logout','user.logout');
+    app.post('/api/dashboard','dashboard.index');
+
 
 };
