@@ -23,7 +23,7 @@ const Login = ({loginButtonLoading, onOk, form:{getFieldDecorator, validateField
         <div className={styles.form}>
             <div className={styles.logo}>
                 <img src={config.logoSrc} alt={'login'}/>
-                <span>Ant Design</span>
+                <span>Dva Admin</span>
             </div>
             <Form>
                 <FormItem hasFeedback>
@@ -41,8 +41,8 @@ const Login = ({loginButtonLoading, onOk, form:{getFieldDecorator, validateField
                         登录
                     </Button>
                 </Row>
-                <p><span>账号：纳兰天忆</span>
-                    <span>密码：123456</span></p>
+                <p><span>账号：guest</span>
+                    <span>密码：guest</span></p>
             </Form>
 
         </div>
