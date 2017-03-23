@@ -15,8 +15,9 @@ module.exports = app => {
     class UserController extends app.Controller {
         * userInfo() {
             var session = this.ctx.session;
+            console.log(session['user_session']);
             const res = {
-                success: session['user_session'] && session['user_session'] > new Date().getTime(),
+                success: session['user_session'] && session['user_session'] < new Date().getTime(),
                 username: session['user_name'] || '',
                 message: ''
             };

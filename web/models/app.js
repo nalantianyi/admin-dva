@@ -27,7 +27,6 @@ export default {
         *login({payload}, {call, put}){
             yield put({type: 'showLoginButtonLoading'});
             const data = yield call(login, parse(payload));
-            console.log(data);
             if (data.success) {
                 yield put({
                     type: 'loginSuccess', payload: {

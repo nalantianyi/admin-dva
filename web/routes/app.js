@@ -7,7 +7,7 @@ import Login from './login';
 import styles from '../components/layout/main.less'
 import {Spin} from 'antd';
 function App({children, location, dispatch, app, loading}) {
-    const {login, loginButtonLoading}=app;
+    const {login, loginButtonLoading, user, siderFold, darkTheme, isNavbar, menuPopoverVisible, navOpenKeys}=app;
     const loginProps = {
         loading,
         loginButtonLoading,
@@ -15,6 +15,29 @@ function App({children, location, dispatch, app, loading}) {
             dispatch({type: 'app/login', payload: data})
         },
     }
+    const headerProps = {
+        user,
+        siderFold,
+        location,
+        isNavbar,
+        menuPopoverVisible,
+        navOpenKeys,
+        switchMenuPopover(){
+            dispatch({type: 'app/switchMenuPopover'});
+        },
+        logout(){
+            dispatch({type: 'app/logout'});
+        },
+        switchSider(){
+            dispatch({type: 'app/switchSider'});
+        },
+        changeOpenKeys(openKeys){
+            localStorage.setItem('navOpenKeys', JSON.stringify(openKeys));
+            dispatch({type: 'app/handleNavOpenKeys', payload: {navOpenKeys: openKeys}});
+        }
+    };
+
+
     return (<div>{
         login
             ?
@@ -27,7 +50,7 @@ function App({children, location, dispatch, app, loading}) {
             </div>}</div>);
 }
 
-App.propTypes={
+App.propTypes = {
     children: PropTypes.element.isRequired,
     location: PropTypes.object,
     dispatch: PropTypes.func,
