@@ -1,7 +1,7 @@
 /**
  * Created by nalantianyi on 2017/3/21.
  */
-import React, {PropTypes} from 'react';
+import  React, {PropTypes} from 'react';
 import {connect} from 'dva';
 import {color} from '../utils/theme';
 

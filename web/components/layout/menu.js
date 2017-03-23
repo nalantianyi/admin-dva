@@ -49,15 +49,15 @@ function Menus({siderFold, darkTheme, location, handleClickNavMenu, navOpenKeys,
         }
         onOpenChange(nextOpenKeys);
         //当菜单收起时，无法操作openKeys
-        let menuProps = !siderFold ? {onOpenChange, openKeys: navOpenKeys} : {};
-
-        return (
-            <Menu {...menuProps} mode={siderFold ? 'vertical' : 'inline'} theme={darkTheme ? 'dark' : 'light'}
-                  onClick={handleClickNavMenu}
-                  defaultSelectedKeys={[location.pathname !== '/' ? location.pathname : '/dashboard']}>
-                {menuItems}
-            </Menu>);
     };
+    let menuProps = !siderFold ? {onOpenChange, openKeys: navOpenKeys} : {};
+
+    return (
+        <Menu {...menuProps} mode={siderFold ? 'vertical' : 'inline'} theme={darkTheme ? 'dark' : 'light'}
+              onClick={handleClickNavMenu}
+              defaultSelectedKeys={[location.pathname !== '/' ? location.pathname : '/dashboard']}>
+            {menuItems}
+        </Menu>);
 }
 Menus.propTypes = {
     siderFold: PropTypes.bool,
