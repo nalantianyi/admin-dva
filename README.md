@@ -11,8 +11,8 @@ dva配合antd的中后端平台<br/>
 </ul>
 <p>下一步版本目标，计划时间点：4月1日</p>
 <ul>
-<li>移动端web门户</li>
-<li>集成微信js，支持公众号</li>
+<li>移动端web门户（私有git中，chick项目中已完成，待集成）</li>
+<li>集成微信js，支持公众号（私有git中，chick项目中已完成，待集成）</li>
 <li>添加react-native支持，调试简单ios和android版本App</li>
 </ul>
 
