@@ -14,7 +14,7 @@ dva配合antd的中后端平台<br/>
 <li>前端ajax使用axios，替换原有的fetch</li>
 <li>添加session</li>
 </ul>
-<p>下一步版本目标，计划时间点：4月1日</p>
+<p>下一步版本目标</p>
 <ul>
 <li>天气接口跨域访问（目前存在问题）</li>
 <li>整体样式改造</li>
