@@ -9,7 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const extractAntd = new ExtractTextPlugin('[name]-antd.css');
+//const extractAntd = new ExtractTextPlugin('[name]-antd.css');
 const extractMy = new ExtractTextPlugin('[name]-my.css');
 const extractLess = new ExtractTextPlugin('[name]-less.css');
 
@@ -51,7 +51,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 include: /node_modules/,
-                use: extractAntd.extract(['css-loader', 'postcss-loader']),
+                use: ['style-loader','css-loader', 'postcss-loader']
             },
             {
                 test: /\.css$/,
@@ -113,7 +113,6 @@ module.exports = {
                 return module.context && module.context.indexOf('node_modules') !== -1;
             }
         }),
-        extractAntd,
         extractMy,
         extractLess
 
