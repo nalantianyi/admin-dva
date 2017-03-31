@@ -10,7 +10,6 @@ var autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractMy = new ExtractTextPlugin('[name]-my.css');
-const extractLess = new ExtractTextPlugin('[name]-less.css');
 
 const svgDirs = [
     require.resolve('antd').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
@@ -44,7 +43,7 @@ module.exports = {
             {
                 test: /\.less$/,
                 exclude: /node_modules/,
-                use: extractLess.extract(['css-loader?modules','postcss-loader','less-loader' ]),
+                use:[ 'style-loader','css-loader?modules', 'postcss-loader', 'less-loader'],
             },
             {
                 test: /\.css$/,
@@ -97,6 +96,5 @@ module.exports = {
             }
         }),
         extractMy,
-        extractLess
     ]
 };
